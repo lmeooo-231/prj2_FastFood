@@ -1,10 +1,12 @@
+wwwroot\css\custom.css
 wwwroot\css\site.css
 wwwroot\favicon.ico
-wwwroot\image\trasua.jpg
-wwwroot\image\pizza.jpg
-wwwroot\image\hamburger.jpg
-wwwroot\image\flan.jpg
-wwwroot\image\coca.jpg
+wwwroot\images\banner.jpg
+wwwroot\images\coca.jpg
+wwwroot\images\flan.jpg
+wwwroot\images\hamburger.jpg
+wwwroot\images\pizza.jpg
+wwwroot\images\trasua.jpg
 wwwroot\js\site.js
 wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css
 wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map

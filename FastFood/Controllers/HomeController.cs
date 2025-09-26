@@ -1,4 +1,4 @@
-﻿ // namespace DbContext của bạn
+﻿
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using FastFood.Models;
@@ -31,13 +31,39 @@ namespace FastFood.Controllers
         public IActionResult ChiTietSanPham(int id)
         {
             var sp = _db.SanPhams
-               .Include(s => s.MaDmNavigation)   
+               .Include(s => s.MaDmNavigation)
                .FirstOrDefault(s => s.MaSp == id);
 
 
             if (sp == null) return NotFound();
 
             return View(sp); // ✅ Truyền 1 sản phẩm vào view
+        }
+
+        public IActionResult ThongTin()
+        {
+            return View();
+        }
+        public IActionResult TatCaSanPham()
+        {
+            var sanPhams = _db.SanPhams.ToList();
+            return View(sanPhams);
+        }
+
+        public IActionResult Search(string keyword)
+        {
+            if (string.IsNullOrEmpty(keyword))
+            {
+                return RedirectToAction("Index");
+            }
+
+            var sanPhams = _db.SanPhams
+                .Include(sp => sp.MaDmNavigation)
+                .Where(sp => sp.TenSp.Contains(keyword) || sp.MoTa.Contains(keyword))
+                .ToList();
+
+            ViewBag.Keyword = keyword;
+            return View(sanPhams);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
